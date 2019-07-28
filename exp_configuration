@@ -25,8 +25,8 @@ k = 6
 
 [MODEL_SETTINGS]
 # number of classes
-no_classes = 10
+no_classes = 11
 # number of color channels
 no_channels = 3
 # size of the images
-img_size = 32
+img_size = 128
