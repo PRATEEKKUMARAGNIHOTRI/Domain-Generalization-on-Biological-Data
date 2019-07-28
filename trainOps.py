@@ -81,7 +81,7 @@ class TrainOps(object):
 	print ('Loading MNIST dataset.')
 	if split=='test':
 		return((np.load('./data/mnist/test.npy')/255. , np.load('./data/mnist/test_label.npy')))
-	else split=='train':
+	else:
 		return (np.load('./data/mnist/train.npy')/255. , np.load('./data/mnist/train_label.npy'))
 # 	image_file = 'train.pkl' if split=='train' else 'test.pkl'
 # 	image_dir = os.path.join(self.data_dir, 'mnist', image_file)
