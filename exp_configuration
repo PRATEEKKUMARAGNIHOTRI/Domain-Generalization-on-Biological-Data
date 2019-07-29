@@ -2,7 +2,7 @@
 
 source_dataset = mnist
 target_dataset = svhn
-no_images = 10000
+no_images = 50
 
 [MAIN_SETTINGS]
 
