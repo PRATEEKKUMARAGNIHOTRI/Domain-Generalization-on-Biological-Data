@@ -58,8 +58,8 @@ for i in range(len(cam)):
   if "cam3"==cam[i].lower():
     cam3_images.append(images[i])
 
-cam2_images = cam2_images[:int(0.01*len(cam2_images))]
-cam3_images = cam3_images[:int(0.01*len(cam3_images))]
+cam2_images = cam2_images[:int(0.001*len(cam2_images))]
+cam3_images = cam3_images[:int(0.001*len(cam3_images))]
 
 print('No. of cam3 images: ', len(cam3_images))
 print('No. of cam2 images: ', len(cam2_images))
