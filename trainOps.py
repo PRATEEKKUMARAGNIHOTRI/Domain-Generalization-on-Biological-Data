@@ -133,34 +133,34 @@ class TrainOps(object):
 		    print 'Generating adversarial images [iter %d]'%(counter_k)
 		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): 
 			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]}
-			print('Location 1')
+			
 
 			#assigning the current batch of images to the variable to learn z_hat
 			sess.run(self.model.z_hat_assign_op, feed_dict)
-			print('Location 2')
+			
 			for n in range(self.T_adv): #running T_adv gradient ascent steps
 			    sess.run(self.model.max_train_op, feed_dict)
-			    print('Location 3')
+			    
 			    
 			#tmp variable with the learned images
 			learnt_imgs_tmp = sess.run(self.model.z_hat, feed_dict)
-			print('Location 4')
+			
 			
 			#stacking the learned images and corresponding labels to the original dataset
 			source_train_images = np.vstack((source_train_images, learnt_imgs_tmp))
-			print('Location 5')
+			
 			source_train_labels = np.hstack((source_train_labels, source_train_labels[start:end]))
-			print('Location 6')
+			
 		
 		    #shuffling the dataset
 		    rnd_indices = range(len(source_train_images))
-		    print('Location 7')
+		    
 		    npr.shuffle(rnd_indices)
-		    print('Location 8')
+		    
 		    source_train_images = source_train_images[rnd_indices]
-		    print('Location 9')
+		    
 		    source_train_labels = source_train_labels[rnd_indices]
-		    print('Location 10')
+		    
 		
 		    counter_k+=1
 		    
@@ -170,21 +170,21 @@ class TrainOps(object):
 		
 		#current batch of images and labels
 		batch_z = source_train_images[i*self.batch_size:(i+1)*self.batch_size]
-		print('Location 11')
+		
 		batch_labels = source_train_labels[i*self.batch_size:(i+1)*self.batch_size]
-		print('Location 12')
+		
 		
 		feed_dict = {self.model.z: batch_z, self.model.labels: batch_labels} 
 
 		#running a step of gradient descent
 		sess.run([self.model.min_train_op, self.model.min_loss], feed_dict)
-		print('Location 13')
+		
 
 		#evaluating the model
 		if t % 250 == 0:
 
 		    summary, min_l, max_l, acc = sess.run([self.model.summary_op, self.model.min_loss, self.model.max_loss, self.model.accuracy], feed_dict)
-		    print('Location 14')
+		    
 
 		    train_rand_idxs = np.random.permutation(source_train_images.shape[0])[:100]
 		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])[:100]
