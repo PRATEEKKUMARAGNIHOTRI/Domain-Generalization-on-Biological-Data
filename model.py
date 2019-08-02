@@ -38,12 +38,16 @@ class Model(object):
                                   math.log(self.input_shape[0]) / math.log(2)))
 		    for scale in range(log_resolution - 2):
 		    	y = tf.layers.conv2d(y, self.nb_filters << scale, **conv_args)
+			y = tf.layers.dropout(y,rate=0.5)
 		    	y = tf.layers.conv2d(y, self.nb_filters << (scale + 1), **conv_args)
+			y = tf.layers.dropout(y,rate=0.5)
 		    	y = tf.layers.average_pooling2d(y, 2, 2)
 
 		    net = tf.contrib.layers.flatten(y)
 		    net = slim.fully_connected(net, 512, scope='fc1')
+		    net = tf.layers.dropout(net,rate=0.5)
 		    net = slim.fully_connected(net, 256, scope='fc2')
+		    net = tf.layers.dropout(net,rate=0.5)
 		    if return_feat:
 			return net	
 		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
