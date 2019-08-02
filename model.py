@@ -48,25 +48,6 @@ class Model(object):
 			return net	
 		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
 		    return net
-
-"""    def encoder(self, images, reuse=False, return_feat=False):
-
-	with tf.variable_scope('encoder', reuse=reuse):
-	    with slim.arg_scope([slim.fully_connected], activation_fn=tf.nn.relu):
-		with slim.arg_scope([slim.conv2d], activation_fn=tf.nn.relu, padding='VALID'):
-
-		    net = slim.conv2d(images, 64, 5, scope='conv1')
-		    net = slim.max_pool2d(net, 2, stride=2, scope='pool1')
-		    net = slim.conv2d(net, 128, 5, scope='conv2')
-		    net = slim.max_pool2d(net, 2, stride=2, scope='pool2')
-		    net = tf.contrib.layers.flatten(net)
-		    net = slim.fully_connected(net, 1024, scope='fc1')
-		    net = slim.fully_connected(net, 1024, scope='fc2')
-		    if return_feat:
-			return net	
-		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
-		    return net"""
-
 		
 	
 	
