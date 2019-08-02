@@ -93,7 +93,7 @@ for i in range(int(pt*len(cam3_images))):
       test['X'][i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
 
 for i in range(int(pt*len(cam3_images)),len(cam3_images)):
-      train['X'][i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
+      train['X'][i-int(pt*len(cam3_images))] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
       
 ######################################################################
 
