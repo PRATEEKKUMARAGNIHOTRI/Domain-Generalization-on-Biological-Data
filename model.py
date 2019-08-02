@@ -31,7 +31,7 @@ class Model(object):
         kernel_size=3,
         padding='same')
 	
-	y = slim.conv2d(images, 128, 1, scope='conv1')
+	y = slim.conv2d(images, 128, 1)
 
 	with tf.variable_scope('encoder', reuse=reuse):
 		    log_resolution = int(round(
