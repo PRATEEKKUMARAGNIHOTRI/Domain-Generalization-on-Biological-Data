@@ -23,7 +23,7 @@ class Model(object):
 	self.input_shape = [128,128,3]
 	self.nb_filters = 3
 
-"""    def encoder(self, images, reuse=False, return_feat=False):
+    def encoder(self, images, reuse=False, return_feat=False):
 	
 	conv_args = dict(
         activation=tf.nn.leaky_relu,
@@ -47,9 +47,9 @@ class Model(object):
 		    if return_feat:
 			return net	
 		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
-		    return net"""
+		    return net
 
-    def encoder(self, images, reuse=False, return_feat=False):
+"""    def encoder(self, images, reuse=False, return_feat=False):
 
 	with tf.variable_scope('encoder', reuse=reuse):
 	    with slim.arg_scope([slim.fully_connected], activation_fn=tf.nn.relu):
@@ -65,7 +65,7 @@ class Model(object):
 		    if return_feat:
 			return net	
 		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
-		    return net
+		    return net"""
 
 		
 	
