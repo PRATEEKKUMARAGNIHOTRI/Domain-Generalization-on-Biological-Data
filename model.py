@@ -10,6 +10,7 @@ Original file is located at
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from utils import lrelu
+import math
 
 class Model(object):
     """Tensorflow model
@@ -19,25 +20,37 @@ class Model(object):
 	self.no_classes = 11
 	self.img_size = 128
 	self.no_channels = 3
+	self.input_shape = [128,128,3]
+	self.nb_filters = 3
 
     def encoder(self, images, reuse=False, return_feat=False):
+	
+	conv_args = dict(
+        activation=tf.nn.leaky_relu,
+        kernel_initializer=initializers.HeReLuNormalInitializer,
+        kernel_size=3,
+        padding='same')
+	
+	y = slim.conv2d(images, 128, 1, scope='conv1')
 
 	with tf.variable_scope('encoder', reuse=reuse):
-	    with slim.arg_scope([slim.fully_connected], activation_fn=tf.nn.relu):
-		with slim.arg_scope([slim.conv2d], activation_fn=tf.nn.relu, padding='VALID'):
+		    log_resolution = int(round(
+                                  math.log(self.input_shape[0]) / math.log(2)))
+		    for scale in range(log_resolution - 2):
+		    	y = tf.layers.conv2d(y, self.nb_filters << scale, **conv_args)
+		    	y = tf.layers.conv2d(y, self.nb_filters << (scale + 1), **conv_args)
+		    	y = tf.layers.average_pooling2d(y, 2, 2)
 
-		    net = slim.conv2d(images, 128, 5, scope='conv1')
-		    net = slim.max_pool2d(net, 2, stride=2, scope='pool1')
-		    net = slim.conv2d(net, 256, 5, scope='conv2')
-		    net = slim.max_pool2d(net, 2, stride=2, scope='pool2')
-		    net = tf.contrib.layers.flatten(net)
-		    net = slim.fully_connected(net, 1024, scope='fc1')
-		    net = slim.fully_connected(net, 1024, scope='fc2')
+		    net = tf.contrib.layers.flatten(y)
+		    net = slim.fully_connected(net, 512, scope='fc1')
+		    net = slim.fully_connected(net, 256, scope='fc2')
 		    if return_feat:
 			return net	
 		    net = slim.fully_connected(net, self.no_classes, activation_fn=None, scope='fco')
 		    return net
 		
+	
+	
     def build_model(self):
 
 	#images placeholder
