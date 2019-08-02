@@ -90,10 +90,10 @@ train = {'X': np.empty((len(cam3_images)-int(pt*len(cam3_images)),128,128,3)) , 
 ######################################################################
 
 for i in range(int(pt*len(cam3_images))):
-      test[i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
+      test['X'][i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
 
 for i in range(int(pt*len(cam3_images)),len(cam3_images)):
-      train[i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
+      train['X'][i] = np.array(PIL.Image.open('./images/'+cam3_images[i]))
       
 ######################################################################
 
@@ -113,7 +113,7 @@ train = {'X': np.empty((len(cam2_images),128,128,3)) , 'y': np.array(label_cam2)
 ######################################################################
 
 for i in range(len(cam2_images)):
-      test[i] = np.array(PIL.Image.open('./images/'+cam2_images[i]))
+      train['X'][i] = np.array(PIL.Image.open('./images/'+cam2_images[i]))
   
 
 
