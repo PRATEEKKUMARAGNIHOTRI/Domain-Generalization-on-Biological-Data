@@ -21,7 +21,7 @@ T_adv = 15
 # min iterations
 T_min = 500
 # number of adversarial phases
-k = 8
+k = 0
 
 [MODEL_SETTINGS]
 # number of classes
