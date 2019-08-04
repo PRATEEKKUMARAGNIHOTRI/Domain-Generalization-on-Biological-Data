@@ -7,7 +7,7 @@ no_images = 1200
 [MAIN_SETTINGS]
 
 # training iterations
-train_iters = 70001
+train_iters = 700
 # number of samples in each batch
 batch_size = 32
 # learning rate min
