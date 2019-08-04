@@ -134,9 +134,14 @@ class TrainOps(object):
 	    for t in range(self.train_iters):
 		if ((t+1) % self.T_min == 0) and (counter_k < self.k): #if T_min iterations are passed
 		    print 'Generating adversarial images [iter %d]'%(counter_k)
+		    hc = 0
+		    
 		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): 
 			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]}
 			
+			hc = hc+1
+			if hc%10==0:
+				print(hc//10)
 
 			#assigning the current batch of images to the variable to learn z_hat
 			sess.run(self.model.z_hat_assign_op, feed_dict)
