@@ -194,8 +194,8 @@ class TrainOps(object):
 		    summary, min_l, max_l, acc = sess.run([self.model.summary_op, self.model.min_loss, self.model.max_loss, self.model.accuracy], feed_dict)
 		    
 
-		    train_rand_idxs = np.random.permutation(source_train_images.shape[0])[:100]
-		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])[:100]
+		    train_rand_idxs = np.random.permutation(source_train_images.shape[0])[:1000]
+		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])[:1000]
 
 		    train_acc, train_min_loss = sess.run(fetches=[self.model.accuracy, self.model.min_loss], 
 					   feed_dict={self.model.z: source_train_images[train_rand_idxs], 
