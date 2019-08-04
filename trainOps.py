@@ -75,7 +75,7 @@ class TrainOps(object):
 # 	labels = svhn['y'].reshape(-1)
 # 	labels[np.where(labels==10)] = 0
 #	return (np.load('./data/svhn/train.npy')/255. , np.load('./data/svhn/train_label.npy'))
-	return (np.squeeze(np.load('./data/mnist/train.npy')[:self.no_images]/255.) , np.load('./data/mnist/train_label.npy')[:self.no_images])
+	return (np.squeeze(np.load('./data/mnist/test.npy')[:self.no_images]/255.) , np.load('./data/mnist/test_label.npy')[:self.no_images])
 
     def load_mnist(self, split='train'):
 
