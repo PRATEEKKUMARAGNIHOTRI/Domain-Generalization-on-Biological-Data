@@ -82,10 +82,10 @@ class TrainOps(object):
 	print ('Loading MNIST dataset.')
 	if split=='test':
 #		return (np.squeeze(np.load('./data/svhn/train.npy')[:self.no_images]/255.) , np.load('./data/svhn/train_label.npy')[:self.no_images])
-		return (np.squeeze(np.load('./data/mnist/train.npy)/255.) , np.load('./data/mnist/train_label.npy'))
+		return (np.squeeze(np.load('./data/mnist/train.npy')/255.) , np.load('./data/mnist/train_label.npy'))
 #		return (np.squeeze(np.load('./data/mnist/test.npy')[:self.no_images]/255.) , np.load('./data/mnist/test_label.npy')[:self.no_images])
 	else:
-		return (np.squeeze(np.load('./data/mnist/train.npy)/255.) , np.load('./data/mnist/train_label.npy'))
+		return (np.squeeze(np.load('./data/mnist/train.npy')/255.) , np.load('./data/mnist/train_label.npy'))
 # 	image_file = 'train.pkl' if split=='train' else 'test.pkl'
 # 	image_dir = os.path.join(self.data_dir, 'mnist', image_file)
 # 	with open(image_dir, 'rb') as f:
