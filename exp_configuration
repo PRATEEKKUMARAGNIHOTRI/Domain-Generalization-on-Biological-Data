@@ -2,7 +2,7 @@
 
 source_dataset = mnist
 target_dataset = svhn
-no_images = 1000
+no_images = 1200
 
 [MAIN_SETTINGS]
 
@@ -19,9 +19,9 @@ gamma = 1.0
 # max iterations
 T_adv = 15
 # min iterations
-T_min = 6500
+T_min = 5000
 # number of adversarial phases
-k = 8
+k = 10
 
 [MODEL_SETTINGS]
 # number of classes
