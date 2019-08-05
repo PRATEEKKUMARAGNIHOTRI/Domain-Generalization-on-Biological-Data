@@ -7,7 +7,7 @@ no_images = 2000
 [MAIN_SETTINGS]
 
 # training iterations
-train_iters = 100001
+train_iters = 30001
 # number of samples in each batch
 batch_size = 32
 # learning rate min
@@ -19,9 +19,9 @@ gamma = 1.0
 # max iterations
 T_adv = 15
 # min iterations
-T_min = 10000
+T_min = 5000
 # number of adversarial phases
-k = 15
+k = 5
 
 [MODEL_SETTINGS]
 # number of classes
