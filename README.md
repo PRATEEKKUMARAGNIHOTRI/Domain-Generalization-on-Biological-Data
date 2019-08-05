@@ -18,8 +18,8 @@ Python 2.7, Tensorflow 1.6.0
 ## How it works
 
 1 - Clone Repository
-<br>2 - Go to directory - Domain-Generalization-on-Biological-Data
+<br>2 - Go to directory - "Domain-Generalization-on-Biological-Data"
 <br>3 - Make sure you have files - (train.csv , test.csv , train_details.csv and test_details.csv) and folder - (images) in the above mentioned directory.
 <br>4 - mkdir data
-<br>5 - process_data.py
+<br>5 - python process_data.py
 <br>6 - sh run_exp
