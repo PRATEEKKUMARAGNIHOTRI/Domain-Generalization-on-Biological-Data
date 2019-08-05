@@ -198,8 +198,8 @@ class TrainOps(object):
 		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])[:1000]
 
 		    train_acc, train_min_loss = sess.run(fetches=[self.model.accuracy, self.model.min_loss], 
-					   feed_dict={self.model.z: source_train_images[train_rand_idxs], 
-						      self.model.labels: source_train_labels[train_rand_idxs]})
+					   feed_dict={self.model.z: source_test_images, 
+						      self.model.labels: source_test_labels})
 		    test_acc, test_min_loss = sess.run(fetches=[self.model.accuracy, self.model.min_loss], 
 					   feed_dict={self.model.z: target_test_images[test_rand_idxs], 
 						      self.model.labels: target_test_labels[test_rand_idxs]})
