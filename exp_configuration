@@ -19,7 +19,7 @@ gamma = 1.0
 # max iterations
 T_adv = 15
 # min iterations
-T_min = 7000
+T_min = 10000
 # number of adversarial phases
 k = 15
 
