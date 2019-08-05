@@ -1,4 +1,4 @@
-# Domain Generalization for biological images 
+# Domain Generalization on biological images 
 Link for paper : [Generalizing to Unseen Domains via Adversarial Data Augmentation](https://arxiv.org/abs/1805.12018)
 
 ## Overview
