@@ -135,13 +135,12 @@ class TrainOps(object):
 		if ((t+1) % self.T_min == 0) and (counter_k < self.k): #if T_min iterations are passed
 		    print 'Generating adversarial images [iter %d]'%(counter_k)
 		    hc = 0
-		    
 		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): 
-			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]}
-			
-			hc = hc+1
+			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]} 
+			hc = hc+1 
 			if hc%10==0:
-				print(hc//10)
+						print(hc//10)
+			
 
 			#assigning the current batch of images to the variable to learn z_hat
 			sess.run(self.model.z_hat_assign_op, feed_dict)
@@ -195,7 +194,7 @@ class TrainOps(object):
 		    
 
 		    train_rand_idxs = np.random.permutation(source_train_images.shape[0])[:1000]
-		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])[:1000]
+		    test_rand_idxs = np.random.permutation(target_test_images.shape[0])
 
 		    train_acc, train_min_loss = sess.run(fetches=[self.model.accuracy, self.model.min_loss], 
 					   feed_dict={self.model.z: source_test_images, 
@@ -229,7 +228,7 @@ class TrainOps(object):
 	    restorer = tf.train.Saver(variables_to_restore)
 	    restorer.restore(sess, os.path.join(self.model_save_path,'encoder'))
 
-	    N = 100 #set accordingly to GPU memory
+	    N = 1000 #set accordingly to GPU memory
 	    target_accuracy = 0
 	    target_loss = 0
 
