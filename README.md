@@ -11,10 +11,6 @@ Link for paper : [Generalizing to Unseen Domains via Adversarial Data Augmentati
 
 ``exp_configuration``: config file with the hyperparameters
 
-### Prerequisites
-
-Python 2.7, Tensorflow 1.6.0
-
 ## How it works
 
 1 - Clone Repository
